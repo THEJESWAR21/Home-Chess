@@ -1,21 +1,47 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 //default App
-export default function Home(){
+export default function Home({navigation}){
+
+  const Menu = () => {
+    navigation.navigate('Menu');
+  }
   
   return(
     <View style={styles.container}>
-         <View style={styles.box1}>
+      <TouchableWithoutFeedback onPress={() => alert('White Done')}>
+      <View style={styles.box1}>
            <Text style={styles.titletext}>0:00</Text>
-           <View style={styles.circle} />
+           
+          
+           <View style={styles.circle}    >
+           
+           <TouchableOpacity onPress={Menu} >
+           <FontAwesome5   size={40} style={styles.menuicon}  color='white'
+           name={'bars'}/>
+             </TouchableOpacity>
+           </View>
            
 
          </View>
-        <View style={styles.box2} >
-        <View style={styles.Start} />
+      </TouchableWithoutFeedback>
+    
+    <TouchableWithoutFeedback onPress={() => alert('Black Done')}>
+    <View style={styles.box2} >
+        
+        <View style={styles.Start}> 
+<TouchableOpacity>
+    <FontAwesome5 size={40} style={styles.playicon}  color='white'
+           name={'play'}/>
+</TouchableOpacity>
+      
+        </View>
         <Text style={styles.titletext2}>0:00</Text>
         </View>
+    </TouchableWithoutFeedback>
+
         
         
     </View>
@@ -26,38 +52,48 @@ const styles = StyleSheet.create({
   container:{
     flex: 1,
     color: '#fff',
+    
   },
   box1: {
-    width: 411,
-    height: 330,
+   flex: 0.8,
     backgroundColor: '#fff',
+    flexWrap: 'wrap'
   },
   box2: {
-    width: 411,
-    height: 330,
+    flex: 0.8,
     backgroundColor: '#000',
+    flexWrap: 'wrap'
   },
   titletext: {
     color: '#000',
     fontWeight: 'bold',
     fontSize: 100,
-    marginTop: 90,
-    marginLeft: 110,
+    position: 'absolute',
+    top: 100,
+    alignSelf: 'center',
+    flex: 1,
+    flexWrap: 'wrap'
   },
   titletext2: {
     color: '#fff',
     fontWeight: 'bold',
     fontSize: 100,
-    top: 10,
-    marginLeft: 110,
+    position: 'absolute',
+    marginTop: 100,
+    alignSelf: 'center',
+    flex: 1,
+    flexWrap: 'wrap',
   },
   circle: {
-    width: 80,
-    height: 80,
+    width: 90,
+    height: 90,
     backgroundColor: '#000',
     borderRadius: 60,
-    marginLeft: 320,
-    bottom: 210,
+    borderWidth:  5,
+    position: 'absolute',
+    alignSelf : 'flex-end',
+    right: 8,
+    top: 6
   },
 
   Start: {
@@ -65,10 +101,22 @@ const styles = StyleSheet.create({
     height: 90,
     backgroundColor: '#000',
     borderRadius: 60,
-    marginLeft: 160,
     borderWidth:  5,
     borderColor: 'white',
-    bottom: 40,
+    position: 'absolute',
+    alignSelf: 'center',
+    bottom: 280
+    
   },
+
+  menuicon: {
+    left: 23,
+    top: 18,
+  },
+  playicon: {
+    left: 26,
+    top: 20, 
+  }
+  
 })
 
