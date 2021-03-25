@@ -5,17 +5,20 @@ import Menu from './components/Menu';
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { Provider as PaperProvider } from 'react-native-paper';
 
 //default App
 export default function App(){
   
   return(
+    <PaperProvider>
     <NavigationContainer>
       <Stack.Navigator>
       <Stack.Screen name="Home" component={Home}  options={{  headerShown: false }}  />
-      <Stack.Screen name="Menu" component={Menu}  options={{  }}  />
+      <Stack.Screen name="Menu" component={Menu}  options={{ headerShown: false  }}  />
       </Stack.Navigator>
     </NavigationContainer>
+</PaperProvider>
   )
   }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, TouchableWithoutFeedback, TouchableHighlight } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 //default App
@@ -8,15 +8,20 @@ export default function Home({navigation}){
   const Menu = () => {
     navigation.navigate('Menu');
   }
+ 
+  const color = () => {
+    backgroundColor="black"
+  }
   
   return(
     <View style={styles.container}>
-      <TouchableWithoutFeedback onPress={() => alert('White Done')}>
+      <TouchableWithoutFeedback  onPress={color}>
+        
       <View style={styles.box1}>
            <Text style={styles.titletext}>0:00</Text>
            
           
-           <View style={styles.circle}    >
+           <View style={styles.circle}>
            
            <TouchableOpacity onPress={Menu} >
            <FontAwesome5   size={40} style={styles.menuicon}  color='white'
@@ -118,5 +123,4 @@ const styles = StyleSheet.create({
     top: 20, 
   }
   
-})
-
+});
