@@ -14,12 +14,12 @@ export default function Menu({navigation}){
              <View style={styles.menuContainer}>
                <View style={styles.circle}>
            
-           <TouchableOpacity onPress={Home} >
-           <FontAwesome5   size={40} style={styles.menuicon}  color='white'
+           <TouchableOpacity onPress={Home}  >
+           <FontAwesome5    size={40} style={styles.menuicon}  color='white'
            name={'arrow-left'}/>
              </TouchableOpacity>
            </View>
-
+               {/* Button Code */}
             <Button style={styles.options}  mode="contained" onPress={() => console.log('')}>
             <Text style={styles.buttonText}>05:00</Text>
 
@@ -68,7 +68,7 @@ export default function Menu({navigation}){
             <Text style={styles.buttonText}>02:00:00</Text>
 
                 </Button>
-                
+                 {/* Button Code End */}
 
         </View>
         </ScrollView>

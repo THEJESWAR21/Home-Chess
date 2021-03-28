@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState }from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, TouchableWithoutFeedback, TouchableHighlight } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
@@ -9,13 +9,23 @@ export default function Home({navigation}){
     navigation.navigate('Menu');
   }
  
-  const color = () => {
-    backgroundColor="black"
-  }
   
+
+  const [iconName, setIconName] = useState("play");
+  const [backgroundColor, setBackgroundColor] = useState('#fff')
+  const [backgroundColor2, setBackgroundColor2] = useState('#000')
+
+  const buttonPress = () => {
+    if(backgroundColor2 == "#000" ){
+      setIconName("#fff")
+      }
+      if(backgroundColor2 == "#fff"){
+        setBackgroundColor2("#000")
+      }
+  }
   return(
     <View style={styles.container}>
-      <TouchableWithoutFeedback  onPress={color}>
+      <TouchableWithoutFeedback >
         
       <View style={styles.box1}>
            <Text style={styles.titletext}>0:00</Text>
@@ -33,13 +43,19 @@ export default function Home({navigation}){
          </View>
       </TouchableWithoutFeedback>
     
-    <TouchableWithoutFeedback onPress={() => alert('Black Done')}>
-    <View style={styles.box2} >
+    <TouchableWithoutFeedback >
+    <View style={styles.box2} onPress={buttonPress} name={backgroundColor2} >
         
         <View style={styles.Start}> 
-<TouchableOpacity>
-    <FontAwesome5 size={40} style={styles.playicon}  color='white'
-           name={'play'}/>
+<TouchableOpacity onPress={() => {
+         if(iconName == "play" ){
+          setIconName("pause")
+          }
+          if(iconName == "pause"){
+            setIconName("play")
+          }
+}}>
+    <FontAwesome5 size={40} style={styles.playicon}  color='white' name={iconName}/>
 </TouchableOpacity>
       
         </View>
@@ -119,8 +135,10 @@ const styles = StyleSheet.create({
     top: 18,
   },
   playicon: {
-    left: 26,
-    top: 20, 
+    position: 'relative',
+    marginTop: 20,
+    marginLeft: 25,
+    
   }
   
 });
