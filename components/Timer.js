@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, TouchableOpacity, TouchableWithoutFeedback, Tou
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 //default App
-export default function Home({navigation}){
+export default function Timer({navigation}){
 
   const Menu = () => {
     navigation.navigate('Menu');
@@ -47,18 +47,17 @@ export default function Home({navigation}){
     <View style={styles.box2} onPress={buttonPress} name={backgroundColor2} >
         
         <View style={styles.Start}> 
-<TouchableOpacity onPress={() => {
-         if(iconName == "play" ){
-          setIconName("pause")
-          }
-          if(iconName == "pause"){
-            setIconName("play")
-          }
-}}>
-    <FontAwesome5 size={40} style={styles.playicon}  color='white' name={iconName}/>
+<TouchableOpacity>
+    <FontAwesome5 size={40} style={styles.playicon}  color='white' name={'pause'}/>
 </TouchableOpacity>
+
       
         </View>
+        <TouchableOpacity>
+          <View style={styles.restart}>
+          <FontAwesome5 size={40} style={styles.restartIcon}  color='white' name={'undo-alt'}/>
+          </View>
+</TouchableOpacity>
         <Text style={styles.titletext2}>0:00</Text>
         </View>
     </TouchableWithoutFeedback>
@@ -77,7 +76,7 @@ const styles = StyleSheet.create({
   },
   box1: {
    flex: 0.8,
-    backgroundColor: '#fff',
+    backgroundColor: '#0FD4FF',
     flexWrap: 'wrap'
   },
   box2: {
@@ -137,8 +136,23 @@ const styles = StyleSheet.create({
   playicon: {
     position: 'relative',
     marginTop: 20,
-    marginLeft: 25,
+    marginLeft: 23,
     
+  },
+  restartIcon:{
+    position: 'relative',
+    marginTop: 20,
+    marginLeft: 23,
+  },
+  Restart:{
+    width: 90,
+    height: 90,
+    backgroundColor: '#000',
+    borderRadius: 60,
+    borderWidth:  5,
+    borderColor: 'white',
+    position: 'relative',
+    alignSelf: 'center',
   }
   
 });

@@ -8,6 +8,9 @@ export default function Home({navigation}){
   const Menu = () => {
     navigation.navigate('Menu');
   }
+  const Timer = () => {
+    navigation.navigate('Timer');
+  }
  
   
 
@@ -47,14 +50,7 @@ export default function Home({navigation}){
     <View style={styles.box2} onPress={buttonPress} name={backgroundColor2} >
         
         <View style={styles.Start}> 
-<TouchableOpacity onPress={() => {
-         if(iconName == "play" ){
-          setIconName("pause")
-          }
-          if(iconName == "pause"){
-            setIconName("play")
-          }
-}}>
+<TouchableOpacity onPress={Timer}>
     <FontAwesome5 size={40} style={styles.playicon}  color='white' name={iconName}/>
 </TouchableOpacity>
       
