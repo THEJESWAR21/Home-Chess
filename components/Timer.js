@@ -26,7 +26,9 @@ export default function Timer({navigation}){
   return(
     <View style={styles.container}>
       <TouchableWithoutFeedback >
-        
+
+  {/* White player box */}
+  
       <View style={styles.box1}>
            <Text style={styles.titletext}>0:00</Text>
            
@@ -44,19 +46,23 @@ export default function Timer({navigation}){
       </TouchableWithoutFeedback>
     
     <TouchableWithoutFeedback >
+
+      {/* Black player box */}
+
     <View style={styles.box2} onPress={buttonPress} name={backgroundColor2} >
         
-        <View style={styles.Start}> 
+        <View style={styles.Pause}> 
 <TouchableOpacity>
-    <FontAwesome5 size={40} style={styles.playicon}  color='white' name={'pause'}/>
+    <FontAwesome5 size={40} style={styles.Pauseicon}  color='white' name={'pause'}/>
 </TouchableOpacity>
 
       
         </View>
         <TouchableOpacity>
-          <View style={styles.restart}>
+        <View style={styles.restart}>
           <FontAwesome5 size={40} style={styles.restartIcon}  color='white' name={'undo-alt'}/>
           </View>
+          
 </TouchableOpacity>
         <Text style={styles.titletext2}>0:00</Text>
         </View>
@@ -112,47 +118,48 @@ const styles = StyleSheet.create({
     borderWidth:  5,
     position: 'absolute',
     alignSelf : 'flex-end',
-    right: 8,
+    right: 10,
     top: 6
   },
 
-  Start: {
+  Pause: {
     width: 90,
     height: 90,
     backgroundColor: '#000',
     borderRadius: 60,
     borderWidth:  5,
     borderColor: 'white',
-    position: 'absolute',
-    alignSelf: 'center',
-    bottom: 280
-    
+    position: 'relative',
+    bottom: 40,     
+    marginLeft: 80,
   },
 
   menuicon: {
     left: 23,
     top: 18,
   },
-  playicon: {
+  Pauseicon: {
     position: 'relative',
     marginTop: 20,
     marginLeft: 23,
     
   },
-  restartIcon:{
-    position: 'relative',
-    marginTop: 20,
-    marginLeft: 23,
-  },
-  Restart:{
-    width: 90,
-    height: 90,
-    backgroundColor: '#000',
-    borderRadius: 60,
-    borderWidth:  5,
-    borderColor: 'white',
-    position: 'relative',
-    alignSelf: 'center',
-  }
+restart: {
+  width: 90,
+  height: 90,
+  backgroundColor: '#000',
+  borderRadius: 60,
+  borderWidth:  5,
+  borderColor: 'white',
+  position: 'relative',
+  marginLeft: 240,
+  bottom: 130,
+},
+restartIcon:{
+  position: 'relative',
+  marginTop: 20,
+  marginLeft: 20,
+}
+
   
 });
