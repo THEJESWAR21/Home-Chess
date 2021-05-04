@@ -5,8 +5,8 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 //default App
 export default function Timer({navigation}){
 
-  const Menu = () => {
-    navigation.navigate('Menu');
+  const Home = () => {
+    navigation.navigate('Home');
   }
  
   
@@ -23,6 +23,8 @@ export default function Timer({navigation}){
         setBackgroundColor2("#000")
       }
   }
+
+  
   return(
     <View style={styles.container}>
       <TouchableWithoutFeedback >
@@ -35,9 +37,9 @@ export default function Timer({navigation}){
           
            <View style={styles.circle}>
            
-           <TouchableOpacity onPress={Menu} >
+           <TouchableOpacity onPress={Home} >
            <FontAwesome5   size={40} style={styles.menuicon}  color='white'
-           name={'bars'}/>
+           name={'arrow-right'}/>
              </TouchableOpacity>
            </View>
            
