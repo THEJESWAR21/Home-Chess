@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {StyleSheet, View, Text, TouchableOpacity, ScrollView} from 'react-native'
+import {StyleSheet, View, Text, TouchableOpacity, ScrollView, FlatList} from 'react-native'
 import { Button } from 'react-native-paper'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
@@ -10,7 +10,7 @@ export default function Menu({navigation}){
       }
 
         const {time, setTime} = useState([
-            {time: '5:00'},
+            {time : '5:00'},
             {time : '10:00'},
             {time : '15:00'},
             {time : '20:00'},
@@ -37,10 +37,18 @@ export default function Menu({navigation}){
              </TouchableOpacity>
            </View>
                {/* Button Code */}
-            <Button style={styles.options}  mode="contained" onPress={() => console.log('')}>
-            <Text style={styles.buttonText}>5:00</Text>
+               <FlatList
+                data={time}
+                style={styles.options} 
+                renderItem={({ item }) => (
+                    <TouchableOpacity >
+                        <Text style={styles.buttonText}>{ item.time }</Text>
+                    </TouchableOpacity>
+                )}
+               />
+        
 
-                </Button>
+
                 <Button style={styles.options}  mode="contained" onPress={() => console.log('')}>
             <Text style={styles.buttonText}>10:00</Text>
 
@@ -88,6 +96,7 @@ export default function Menu({navigation}){
                  {/* Button Code End */}
 
         </View>
+        
         </ScrollView>
        
         )
