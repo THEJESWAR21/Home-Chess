@@ -3,13 +3,19 @@ import { StyleSheet, Text, View, FlatList } from 'react-native';
 
 export default function Menu() {
   const [time, setTime] = useState([
-    { name: 'shaun', id: '1' },
-    { name: 'yoshi', id: '2' },
-    { name: 'mario', id: '3' },
-    { name: 'luigi', id: '4' },
-    { name: 'peach', id: '5' },
-    { name: 'toad', id: '6' },
-    { name: 'bowser', id: '7' },
+    { name: '5:00', id: '1' },
+    { name: '10:00', id: '2' },
+    { name: '15:00', id: '3' },
+    { name: '20:00', id: '4' },
+    { name: '25:00', id: '5' },
+    { name: '30:00', id: '6' },
+    { name: '35:00', id: '7' },
+    { name: '40:00', id: '8' },
+    { name: '45:00', id: '9' },
+    { name: '50:00', id: '10' },
+    { name: '55:00', id: '11' },
+    { name: '1:00:00', id: '12' },
+    { name: '1:00:00', id: '13' },
   ]);
 
   return (
@@ -40,7 +46,10 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     marginTop: 24,
     padding: 30,
-    backgroundColor: 'pink',
-    fontSize: 24,
+    backgroundColor: '#18dcff',
+    fontSize: 39,
+    color: '#fff',
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
 });
