@@ -10,25 +10,29 @@ export default function Menu({navigation}){
       }
 
         const {time, setTime} = useState([
-            {time : '5:00'},
-            {time : '10:00'},
-            {time : '15:00'},
-            {time : '20:00'},
-            {time : '25:00'},
-            {time : '30:00'},
-            {time : '40:00'},
-            {time : '45:00'},
-            {time : '50:00'},
-            {time : '55:00'},
-            {time : '01:00:00'},
-            {time : '02:00:00'},
+            {time : '5:00', key:"1"},
+            {time : '10:00', key:"2"},
+            {time : '15:00', key:"3"},
+            {time : '20:00', key:"4"},
+            {time : '25:00', key:"5"},
+            {time : '30:00', key:"6"},
+            {time : '40:00', key:"7"},
+            {time : '45:00', key:"8"},
+            {time : '50:00', key:"9"},
+            {time : '55:00', key:"10"},
+            {time : '01:00:00', key:"11"},
+            {time : '02:00:00', key:"12"},
         ]);
       
    
 
     return(
-     <View></View>
+     <FlatList
+        data={time}
+        renderItem={( item ) => (
 
+        )}
+    />
        
        
         )
