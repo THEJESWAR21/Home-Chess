@@ -27,77 +27,9 @@ export default function Menu({navigation}){
    
 
     return(
-        <ScrollView>
-             <View style={styles.menuContainer}>
-               <View style={styles.circle}>
-           
-           <TouchableOpacity onPress={Home}  >
-           <FontAwesome5    size={40} style={styles.menuicon}  color='white'
-           name={'arrow-left'}/>
-             </TouchableOpacity>
-           </View>
-               {/* Button Code */}
-               <FlatList
-                data={time}
-                style={styles.options} 
-                renderItem={({ item }) => (
-                    <TouchableOpacity >
-                        <Text style={styles.buttonText}>{ item.time }</Text>
-                    </TouchableOpacity>
-                )}
-               />
-        
+     <View></View>
 
-
-                <Button style={styles.options}  mode="contained" onPress={() => console.log('')}>
-            <Text style={styles.buttonText}>10:00</Text>
-
-                </Button>
-                <Button style={styles.options}  mode="contained" onPress={() => console.log('')}>
-            <Text style={styles.buttonText}>15:00</Text>
-
-                </Button>
-                <Button style={styles.options}  mode="contained" onPress={() => console.log('')}>
-            <Text style={styles.buttonText}>20:00</Text>
-
-                </Button>
-                <Button style={styles.options}  mode="contained" onPress={() => console.log('')}>
-            <Text style={styles.buttonText}>25:00</Text>
-
-                </Button>
-                <Button style={styles.options}  mode="contained" onPress={() => console.log('')}>
-            <Text style={styles.buttonText}>30:00</Text>
-
-                </Button>
-                <Button style={styles.options}  mode="contained" onPress={() => console.log('')}>
-            <Text style={styles.buttonText}>40:00</Text>
-
-                </Button>
-                <Button style={styles.options}  mode="contained" onPress={() => console.log('')}>
-            <Text style={styles.buttonText}>45:00</Text>
-
-                </Button>
-                <Button style={styles.options}  mode="contained" onPress={() => console.log('')}>
-            <Text style={styles.buttonText}>50:00</Text>
-
-                </Button>
-                <Button style={styles.options}  mode="contained" onPress={() => console.log('')}>
-            <Text style={styles.buttonText}>55:00</Text>
-
-                </Button>
-                <Button style={styles.options}  mode="contained" onPress={() => console.log('')}>
-            <Text style={styles.buttonText}>01:00:00</Text>
-
-                </Button>
-                <Button style={styles.options}  mode="contained" onPress={() => console.log('')}>
-            <Text style={styles.buttonText}>02:00:00</Text>
-
-                </Button>
-                 {/* Button Code End */}
-
-        </View>
-        
-        </ScrollView>
+       
        
         )
 }
