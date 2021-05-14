@@ -26,7 +26,7 @@ export default function Menu({ navigation }) {
         keyExtractor={(item) => item.id} 
         data={time} 
         renderItem={({ item }) => (
-          <TouchableOpacity onPress={() => navigation.navigate('Timer')}>
+          <TouchableOpacity onPress={() => navigation.navigate('Timer', item)}>
           <Text style={styles.item}>{item.name}</Text>
           </TouchableOpacity>
         )}

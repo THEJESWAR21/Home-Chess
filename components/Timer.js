@@ -1,13 +1,11 @@
 import React, { useState }from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, TouchableWithoutFeedback, TouchableHighlight } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-
+import { useNavigation } from '@react-navigation/native';
 //default App
-export default function Timer({navigation}){
+export default function Timer(props){
+   
 
-  const Home = () => {
-    navigation.navigate('Home');
-  }
  
   
 
@@ -32,12 +30,12 @@ export default function Timer({navigation}){
   {/* White player box */}
   
       <View style={styles.box1}>
-           <Text style={styles.titletext}>0:00</Text>
+           <Text style={styles.titletext}>{props.route.params.name}</Text>
            
           
            <View style={styles.circle}>
            
-           <TouchableOpacity onPress={Home} >
+           <TouchableOpacity onPress={() => navigation.navigate('Home')} >
            <FontAwesome5   size={40} style={styles.menuicon}  color='white'
            name={'arrow-right'}/>
              </TouchableOpacity>
@@ -66,7 +64,7 @@ export default function Timer({navigation}){
           </View>
           
 </TouchableOpacity>
-        <Text style={styles.titletext2}>0:00</Text>
+        <Text style={styles.titletext2}>{props.route.params.name}</Text>
         </View>
     </TouchableWithoutFeedback>
 
