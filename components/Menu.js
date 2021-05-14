@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
+import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
 
 export default function Menu() {
   const [time, setTime] = useState([
@@ -20,17 +20,21 @@ export default function Menu() {
 
   return (
     <View style={styles.container}>
-
-      <FlatList 
+        
+<FlatList 
         numRows={1}
         keyExtractor={(item) => item.id} 
         data={time} 
         renderItem={({ item }) => ( 
+          <TouchableOpacity>
           <Text style={styles.item}>{item.name}</Text>
+          </TouchableOpacity>
         )}
       />
+  
 
     </View>
+
   );
 }
 
