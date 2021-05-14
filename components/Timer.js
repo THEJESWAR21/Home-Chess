@@ -4,7 +4,7 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { useNavigation } from '@react-navigation/native';
 //default App
 export default function Timer(props){
-   
+  const navigation = useNavigation();
 
  
   
