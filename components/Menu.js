@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
-import { LongPressGestureHandler } from 'react-native-gesture-handler';
 
-export default function Menu() {
+export default function Menu({ navigation }) {
   const [time, setTime] = useState([
     { name: '5:00', id: '1' },
     { name: '10:00', id: '2' },
@@ -19,10 +18,6 @@ export default function Menu() {
     { name: '1:00:00', id: '13' },
   ]);
 
-  const pressHandler = (name) => {
-    console.log(name);
-  }
-
   return (
     <View style={styles.container}>
         
@@ -30,8 +25,8 @@ export default function Menu() {
         numRows={1}
         keyExtractor={(item) => item.id} 
         data={time} 
-        renderItem={({ item }) => ( 
-          <TouchableOpacity onPress={() => pressHandler(item.name)}>
+        renderItem={({ item }) => (
+          <TouchableOpacity onPress={() => navigation.navigate('Timer')}>
           <Text style={styles.item}>{item.name}</Text>
           </TouchableOpacity>
         )}
