@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import Home from './components/Home';
 import Menu from './components/Menu';
 import Timer from './components/Timer';
 import 'react-native-gesture-handler';
