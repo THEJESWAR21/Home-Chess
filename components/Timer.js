@@ -5,24 +5,18 @@ import { useNavigation } from '@react-navigation/native';
 //default App
 export default function Timer(props){
   const navigation = useNavigation();
-
- 
-  
-
   const [iconName, setIconName] = useState("play");
-  const [backgroundColor, setBackgroundColor] = useState('#fff')
-  const [backgroundColor2, setBackgroundColor2] = useState('#000')
 
-  const buttonPress = () => {
-    if(backgroundColor2 == "#000" ){
-      setIconName("#fff")
+  function countDown(){
+    setInterval(function(){
+      if(timeLeft <= 0) {
+        clearInterval(timeLeft = 0)
       }
-      if(backgroundColor2 == "#fff"){
-        setBackgroundColor2("#000")
-      }
+      timeLeftDisplay.innerHTML = timeLeft
+      timeLeft -=1
+    },
+   )
   }
-
-  
   return(
     <View style={styles.container}>
       <TouchableWithoutFeedback >
@@ -49,9 +43,9 @@ export default function Timer(props){
 
       {/* Black player box */}
 
-    <View style={styles.box2} onPress={buttonPress} name={backgroundColor2} >
+    <View style={styles.box2}  >
         
-        <View style={styles.Pause}> 
+        <View style={styles.Pause} onPress={countDown}> 
 <TouchableOpacity>
     <FontAwesome5 size={40} style={styles.Pauseicon}  color='white' name={'pause'}/>
 </TouchableOpacity>
