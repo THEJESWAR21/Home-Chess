@@ -14,8 +14,8 @@ export default function App(){
     <PaperProvider>
     <NavigationContainer>
       <Stack.Navigator>
-      <Stack.Screen name="Timer" component={Timer}  options={{ headerShown: false  }}  />
       <Stack.Screen name="Menu" component={Menu}  options={{ headerShown: false  }}  />
+      <Stack.Screen name="Timer" component={Timer}  options={{ headerShown: false  }}  />
       </Stack.Navigator>
     </NavigationContainer>
 </PaperProvider>

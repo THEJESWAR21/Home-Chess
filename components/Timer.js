@@ -4,14 +4,12 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { useNavigation } from '@react-navigation/native';
 //default App
 export default function Timer(props){
-   
-
- 
-  
-
+  const navigation = useNavigation();
   const [iconName, setIconName] = useState("play");
   const [backgroundColor, setBackgroundColor] = useState('#fff')
   const [backgroundColor2, setBackgroundColor2] = useState('#000')
+  const [timer, setTimer] = useState(
+  )
 
   const buttonPress = () => {
     if(backgroundColor2 == "#000" ){
@@ -30,14 +28,14 @@ export default function Timer(props){
   {/* White player box */}
   
       <View style={styles.box1}>
-           <Text style={styles.titletext}></Text>
+           <Text style={styles.titletext}>{props.route.params.name}</Text>
            
           
            <View style={styles.circle}>
            
-           <TouchableOpacity onPress={() => navigation.navigate('Home')} >
+           <TouchableOpacity onPress={() => navigation.navigate('Menu')} >
            <FontAwesome5   size={40} style={styles.menuicon}  color='white'
-           name={'arrow-right'}/>
+           name={'bars'}/>
              </TouchableOpacity>
            </View>
            
@@ -49,18 +47,18 @@ export default function Timer(props){
 
       {/* Black player box */}
 
-    <View style={styles.box2} onPress={buttonPress} name={backgroundColor2} >
+    <View style={styles.box2}  >
         
         <View style={styles.Pause}> 
-<TouchableOpacity >
-    <FontAwesome5 size={40} style={styles.Pauseicon}  color='white' name={iconName} onPress={() => {
+<TouchableOpacity onPress={() => {
          if(iconName == "play" ){
           setIconName("pause")
           };
           if(iconName == "pause"){
             setIconName("play")
           }
-}}/>
+}} >
+    <FontAwesome5 size={40} style={styles.Pauseicon}  color='white' name={iconName} />
 </TouchableOpacity>
 
       
@@ -71,7 +69,7 @@ export default function Timer(props){
           </View>
           
 </TouchableOpacity>
-        <Text style={styles.titletext2}></Text>
+        <Text style={styles.titletext2}>{props.route.params.name}</Text>
         </View>
     </TouchableWithoutFeedback>
 
