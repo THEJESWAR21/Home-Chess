@@ -8,17 +8,22 @@ export default function Timer(props){
   const [iconName, setIconName] = useState("play");
   const [backgroundColor, setBackgroundColor] = useState('#fff')
   const [backgroundColor2, setBackgroundColor2] = useState('#000')
-  const [timer, setTimer] = useState(
-  )
 
-  const buttonPress = () => {
-    if(backgroundColor2 == "#000" ){
-      setIconName("#fff")
-      }
-      if(backgroundColor2 == "#fff"){
-        setBackgroundColor2("#000")
-      }
+  const startingMinutes = 10;
+  let time = startingMinutes * 60;
+
+  const countdownEl = document.getElementById('bullshit')
+  setInterval(updateCountdown, 1000);
+
+  function updateCountdown(){
+    const minutes = Math.floor(time / 60);
+    let seconds = time % 60;
+
+    seconds - seconds < 10 ? '0' + seconds : seconds;
+
+    countdownEl
   }
+
 
   
   return(
@@ -28,7 +33,7 @@ export default function Timer(props){
   {/* White player box */}
   
       <View style={styles.box1}>
-           <Text style={styles.titletext}>{props.route.params.name}</Text>
+           <Text name='bullshit' style={styles.titletext}>{props.route.params.name}</Text>
            
           
            <View style={styles.circle}>
