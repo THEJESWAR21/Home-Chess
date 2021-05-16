@@ -36,10 +36,10 @@ export default function Timer(props){
     let hours = Math.floor(secondsLeft / 60 / 60)
     let mins = Math.floor((secondsLeft / 60) % 60)
     let seconds = Math.floor(secondsLeft % 60)
-    let displayMins = props.route.params.name
-    let displaySecs = props.route.params.minutes
+    let displayHours = hours < 10 ? `${props.route.params.name}` : hours
+  let displayMins = mins < 10 ? `${props.route.params.name}` : mins
+  let displaySecs = seconds < 10 ? `${props.route.params.name}` : seconds
     return {
-      displayMins,
       displaySecs,
     }
   }
@@ -80,13 +80,16 @@ export default function Timer(props){
           if(iconName == "pause"){
             setIconName("play")
           }
+
+          
 }} >
-    <FontAwesome5  size={40} style={styles.Pauseicon}  color='white' name={iconName} />
+    <FontAwesome5       onPress={() => setTimerOn(timerOn => !timerOn)}
+ size={40} style={styles.Pauseicon}  color='white' name={iconName} />
 </TouchableOpacity>
 
       
         </View>
-        <TouchableOpacity onPress={() => setTimerOn(timerOn => !timerOn)}>
+        <TouchableOpacity>
         <View style={styles.restart}>
           <FontAwesome5 size={40} style={styles.restartIcon}  color='white' name={'undo-alt'}/>
           </View>
