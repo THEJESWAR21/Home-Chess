@@ -3,16 +3,16 @@ import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native
 
 export default function Menu({ navigation }) {
   const [time, setTime] = useState([
-    { name: '5:00',  id: '1' },
-    { name: '10:00', id: '2' },
-    { name: '15:00', id: '3' },
-    { name: '20:00', id: '4' },
-    { name: '25:00', id: '5' },
-    { name: '30:00', id: '6' },
-    { name: '35:00', id: '7' },
-    { name: '40:00', id: '8' },
-    { name: '45:00', id: '9' },
-    { name: '50:00', id: '10' },
+    { name: '5',seconds: '00',  id: '1' },
+    { name: '10',seconds: '00', id: '2' },
+    { name: '15',seconds: '00', id: '3' },
+    { name: '20',seconds: '00', id: '4' },
+    { name: '25',seconds: '00', id: '5' },
+    { name: '30',seconds: '00', id: '6' },
+    { name: '35',seconds: '00', id: '7' },
+    { name: '40',seconds: '00', id: '8' },
+    { name: '45',seconds: '00', id: '9' },
+    { name: '50',seconds: '00', id: '10' },
   ]);
 
   return (

@@ -2,16 +2,15 @@ import React, { useState, useEffect }from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, TouchableWithoutFeedback, TouchableHighlight } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { useNavigation } from '@react-navigation/native';
-import BackgroundTimer from "react-native-background-timer"
+import BackgroundTimer from "react-native-background-timer";
 //default App
 
 export default function Timer(props){
   const navigation = useNavigation();
   const [iconName, setIconName] = useState("play");
 
-  const [secondsLeft, setSecondsLeft] = useState(3601);
+  const [secondsLeft, setSecondsLeft] = useState(props.route.params.seconds);
   const [timerOn, setTimerOn] = useState(false);
-  // Runs when timerOn value changes to start or stop timer
   useEffect(() => {
     if (timerOn) startTimer();
     else BackgroundTimer.stopBackgroundTimer();
@@ -34,13 +33,15 @@ export default function Timer(props){
 
   const clockify = () => {
     let hours = Math.floor(secondsLeft / 60 / 60)
-    let mins = Math.floor((secondsLeft / 60) % 60)
-    let seconds = Math.floor(secondsLeft % 60)
+    let mins = Math.floor((secondsLeft / props.route.params.name) % props.route.params.name)
+    let seconds = Math.floor(secondsLeft % props.route.params.seconds )
+
     let displayHours = hours < 10 ? `${props.route.params.name}` : hours
-  let displayMins = mins < 10 ? `${props.route.params.name}` : mins
-  let displaySecs = seconds < 10 ? `${props.route.params.name}` : seconds
+  let displayMins = mins < 1 ? `${props.route.params.name}` : mins
+  let displaySecs = seconds < 1 ? `${props.route.params.seconds}` : props.route.params.seconds
     return {
-      displaySecs,
+      displayMins,
+      displaySecs
     }
   }
   
@@ -51,7 +52,7 @@ export default function Timer(props){
   {/* White player box */}
   
       <View style={styles.box1}>
-           <Text id='timer'  style={styles.titletext} > {clockify().displayMins}{" "}{clockify().displaySecs}  </Text>
+           <Text id='timer'  style={styles.titletext} > {clockify().displayMins}:{clockify().displaySecs}  </Text>
            
           
            <View style={styles.circle}>
@@ -73,7 +74,7 @@ export default function Timer(props){
     <View style={styles.box2}  >
         
         <View  style={styles.Pause}> 
-<TouchableOpacity  onPress={() => {
+<TouchableOpacity onPress={() => setTimerOn(timerOn => !timerOn)}  onPress={() => {
          if(iconName == "play" ){
           setIconName("pause")
           };
@@ -83,7 +84,7 @@ export default function Timer(props){
 
           
 }} >
-    <FontAwesome5       onPress={() => setTimerOn(timerOn => !timerOn)}
+    <FontAwesome5      
  size={40} style={styles.Pauseicon}  color='white' name={iconName} />
 </TouchableOpacity>
 
@@ -95,7 +96,7 @@ export default function Timer(props){
           </View>
           
 </TouchableOpacity>
-        <Text style={styles.titletext2}>{props.route.params.name}</Text>
+        <Text style={styles.titletext2}>{clockify().displayMins}:{clockify().displaySecs}</Text>
         </View>
     </TouchableWithoutFeedback>
 
