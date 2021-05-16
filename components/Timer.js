@@ -1,30 +1,48 @@
-import React, { useState }from 'react';
+import React, { useState, useEffect }from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, TouchableWithoutFeedback, TouchableHighlight } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { useNavigation } from '@react-navigation/native';
+import BackgroundTimer from "react-native-background-timer"
 //default App
+
 export default function Timer(props){
   const navigation = useNavigation();
   const [iconName, setIconName] = useState("play");
-  const [backgroundColor, setBackgroundColor] = useState('#fff')
-  const [backgroundColor2, setBackgroundColor2] = useState('#000')
 
-  const startingMinutes = 10;
-  let time = startingMinutes * 60;
+  const [secondsLeft, setSecondsLeft] = useState(3601);
+  const [timerOn, setTimerOn] = useState(false);
+  // Runs when timerOn value changes to start or stop timer
+  useEffect(() => {
+    if (timerOn) startTimer();
+    else BackgroundTimer.stopBackgroundTimer();
+    return () => {
+      BackgroundTimer.stopBackgroundTimer();
+    };
+  }, [timerOn]);
 
-  const countdownEl = document.getElementById('bullshit')
-  setInterval(updateCountdown, 1000);
-
-  function updateCountdown(){
-    const minutes = Math.floor(time / 60);
-    let seconds = time % 60;
-
-    seconds - seconds < 10 ? '0' + seconds : seconds;
-
-    countdownEl
+  const startTimer = () => {
+    BackgroundTimer.runBackgroundTimer(() => {
+      setSecondsLeft(secs => {
+        if (secs > 0) return secs - 1
+        else return 0
+      })
+    }, 1000)
   }
+  useEffect(() => {
+    if (secondsLeft === 0) BackgroundTimer.stopBackgroundTimer()
+  }, [secondsLeft])
 
-
+  const clockify = () => {
+    let hours = Math.floor(secondsLeft / 60 / 60)
+    let mins = Math.floor((secondsLeft / 60) % 60)
+    let seconds = Math.floor(secondsLeft % 60)
+    let displayMins = props.route.params.name
+    let displaySecs = props.route.params.minutes
+    return {
+      displayMins,
+      displaySecs,
+    }
+  }
   
   return(
     <View style={styles.container}>
@@ -33,7 +51,7 @@ export default function Timer(props){
   {/* White player box */}
   
       <View style={styles.box1}>
-           <Text name='bullshit' style={styles.titletext}>{props.route.params.name}</Text>
+           <Text id='timer'  style={styles.titletext} > {clockify().displayMins}{" "}{clockify().displaySecs}  </Text>
            
           
            <View style={styles.circle}>
@@ -54,8 +72,8 @@ export default function Timer(props){
 
     <View style={styles.box2}  >
         
-        <View style={styles.Pause}> 
-<TouchableOpacity onPress={() => {
+        <View  style={styles.Pause}> 
+<TouchableOpacity  onPress={() => {
          if(iconName == "play" ){
           setIconName("pause")
           };
@@ -63,12 +81,12 @@ export default function Timer(props){
             setIconName("play")
           }
 }} >
-    <FontAwesome5 size={40} style={styles.Pauseicon}  color='white' name={iconName} />
+    <FontAwesome5  size={40} style={styles.Pauseicon}  color='white' name={iconName} />
 </TouchableOpacity>
 
       
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => setTimerOn(timerOn => !timerOn)}>
         <View style={styles.restart}>
           <FontAwesome5 size={40} style={styles.restartIcon}  color='white' name={'undo-alt'}/>
           </View>

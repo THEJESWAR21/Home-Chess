@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native
 
 export default function Menu({ navigation }) {
   const [time, setTime] = useState([
-    { name: '5:00', id: '1' },
+    { name: '5:00',  id: '1' },
     { name: '10:00', id: '2' },
     { name: '15:00', id: '3' },
     { name: '20:00', id: '4' },
@@ -13,9 +13,6 @@ export default function Menu({ navigation }) {
     { name: '40:00', id: '8' },
     { name: '45:00', id: '9' },
     { name: '50:00', id: '10' },
-    { name: '55:00', id: '11' },
-    { name: '1:00:00', id: '12' },
-    { name: '1:00:00', id: '13' },
   ]);
 
   return (
